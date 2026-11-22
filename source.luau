@@ -20,7 +20,7 @@ function library:CreateWindow(t)
     s.ResetOnSpawn = false
     local f = Instance.new("Frame",s)
     f.Size = UDim2.new(0,400,0,30)
-    f.Position = UDim2.new(0.5,-200,0.5,-500)
+    f.Position = UDim2.new(0.5,-200,0.5,-250)
     f.BackgroundColor3 = Color3.fromRGB(30,30,30)
     f.BorderColor3 = Color3.fromRGB(60,60,60)
     f.Draggable = true
