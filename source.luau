@@ -72,6 +72,16 @@ function library:CreateWindow(options)
         if options.Name == nil or type(options.Name) ~= "string" then
             options.Name = "Tab"
         end
+        local tabPos = 0
+        for _, pos in pairs(f2:GetChildren()) do
+            if pos:IsA("TextButton") then
+                if tabPos >= 350 then
+                    error("You can only have 8 tabs or less",2)
+                else
+                    tabPos += 50
+                end
+            end
+        end
         local f3 = Instance.new("ScrollingFrame",f2)
         f3.Name = options.Name
         f3.Size = UDim2.new(1,0,1,0)
@@ -81,6 +91,7 @@ function library:CreateWindow(options)
         f3.Visible = false
         local t = Instance.new("TextButton",f1)
         t.Size = UDim2.new(0,50,1,0)
+        t.Position = UDim2.new(0,tabPos,0,0)
         t.BackgroundColor3 = Color3.fromRGB(30,30,30)
         t.BorderSizePixel = 0
         t.TextColor3 = Color3.new(1,1,1)
