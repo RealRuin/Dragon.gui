@@ -11,10 +11,10 @@ function library:CreateWindow(options)
         options.Executor = false
     end
     local exec,ver = identifyexecutor()
-    if game:GetService("CoreGui"):FindFirstChild("Dragon") and game:GetService("CoreGui").Dragon:IsA("Folder") then
+    if gethui():FindFirstChild("Dragon") and gethui.Dragon:IsA("Folder") then
         error("You already have a window created",2)
     end
-    local folder = Instance.new("Folder",game:GetService("CoreGui"))
+    local folder = Instance.new("Folder",gethui())
     folder.Name = "Dragon"
     local s = Instance.new("ScreenGui",folder)
     s.ResetOnSpawn = false
