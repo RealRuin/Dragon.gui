@@ -35,7 +35,7 @@ function library:CreateWindow(t)
     f1.Name = "TabButtonContainer"
     local f2 = Instance.new("Frame",f)
     f2.Size = UDim2.new(1,0,0,455)
-    f2.Position = UDim2.new(0,0,0,47)
+    f2.Position = f1.Position + UDim2.new(0,0,0,21)
     f2.BorderColor3 = Color3.fromRGB(60,60,60)
     f2.BackgroundColor3 = Color3.fromRGB(30,30,30)
     f2.ClipsDescendants = true
@@ -46,10 +46,11 @@ function library:CreateWindow(t)
     t1.TextColor3 = Color3.new(1,1,1)
     t1.TextSize = 16
     t1.TextXAlignment = Enum.TextXAlignment.Left
+    t1.BackgroundTransparency = 1
     if t.Executor == true then
         local t2 = t1:Clone()
         t2.Parent = t1.Parent
-        t2.Text = exec .. ver .. " "
+        t2.Text = exec .. " " .. ver .. " "
         t2.TextXAlignment = Enum.TextXAlignment.Right
     end
     local i = Instance.new("ImageLabel",f2)
