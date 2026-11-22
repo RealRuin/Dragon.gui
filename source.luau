@@ -73,7 +73,7 @@ function library:CreateWindow(options)
             options.Name = "Tab"
         end
         local tabPos = 0
-        for _, pos in pairs(f2:GetChildren()) do
+        for _, pos in pairs(f1:GetChildren()) do
             if pos:IsA("TextButton") then
                 if tabPos >= 350 then
                     error("You can only have 8 tabs or less",2)
