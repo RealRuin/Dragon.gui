@@ -12,3 +12,11 @@ Creating a window:
 ```luau
 local window = library:CreateWindow({Name = "Example",Executor = true})
 ```
+Creating tabs:
+```luau
+local tab = window:CreateTab({Name = "Example"})
+```
+or just
+```luau
+window:CreateTab({Name = "Example2"})
+```
