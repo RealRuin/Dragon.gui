@@ -19,7 +19,7 @@ function library:CreateWindow(t)
     local s = Instance.new("ScreenGui",folder)
     s.ResetOnSpawn = false
     local f = Instance.new("Frame",s)
-    f.Size = UDim2.new(0,400,0,30)
+    f.Size = UDim2.new(0,400,0,20)
     f.Position = UDim2.new(0.5,-200,0.5,-250)
     f.BackgroundColor3 = Color3.fromRGB(30,30,30)
     f.BorderColor3 = Color3.fromRGB(60,60,60)
@@ -35,7 +35,7 @@ function library:CreateWindow(t)
     f1.Name = "TabButtonContainer"
     local f2 = Instance.new("Frame",f)
     f2.Size = UDim2.new(1,0,0,455)
-    f2.Position = f1.Position + UDim2.new(0,0,0,21)
+    f2.Position = f1.Position + UDim2.new(0,0,0,16)
     f2.BorderColor3 = Color3.fromRGB(60,60,60)
     f2.BackgroundColor3 = Color3.fromRGB(30,30,30)
     f2.ClipsDescendants = true
