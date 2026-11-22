@@ -1,14 +1,14 @@
 local library = {}
 
-function library:CreateWindow(t)
-    if type(t) ~= "table" then
-        error("Expected table, got " .. typeof(t),2)
+function library:CreateWindow(options)
+    if type(options) ~= "table" then
+        error("Expected table, got " .. typeof(options),2)
     end
-    if t.Name == nil or type(t.Name) ~= "string" then
-        t.Name = "Dragon UI"
+    if options.Name == nil or type(options.Name) ~= "string" then
+        options.Name = "Dragon UI"
     end
-    if t.Executor == nil or type(t.Executor) ~= "boolean" then
-        t.Executor = false
+    if options.Executor == nil or type(options.Executor) ~= "boolean" then
+        options.Executor = false
     end
     local exec,ver = identifyexecutor()
     if game:GetService("CoreGui"):FindFirstChild("Dragon") and game:GetService("CoreGui").Dragon:IsA("Folder") then
@@ -41,13 +41,13 @@ function library:CreateWindow(t)
     f2.ClipsDescendants = true
     local t1 = Instance.new("TextLabel",f)
     t1.Size = UDim2.new(1,0,1,0)
-    t1.Text = " " .. t.Name
+    t1.Text = " " .. options.Name
     t1.Font = Enum.Font.Gotham
     t1.TextColor3 = Color3.new(1,1,1)
     t1.TextSize = 16
     t1.TextXAlignment = Enum.TextXAlignment.Left
     t1.BackgroundTransparency = 1
-    if t.Executor == true then
+    if options.Executor == true then
         local t2 = t1:Clone()
         t2.Parent = t1.Parent
         t2.Text = exec .. " " .. ver .. " "
@@ -67,6 +67,42 @@ function library:CreateWindow(t)
     local i4 = i:Clone()
     i4.Parent = i.Parent
     i4.Position = UDim2.new(0,0,0,300)
+    local window = {}
+    function window:CreateTab(options)
+        if options.Name == nil or type(options.Name) ~= "string" then
+            options.Name = "Tab"
+        end
+        local f3 = Instance.new("ScrollingFrame",f2)
+        f3.Name = options.Name
+        f3.Size = UDim2.new(1,0,1,0)
+        f3.BackgroundTransparency = 1
+        f3.BorderSizePixel = 0
+        f3.ScrollBarThickness = 0
+        f3.Visible = false
+        local t = Instance.new("TextButton",f1)
+        t.Size = UDim2.new(0,50,1,0)
+        t.BackgroundColor3 = Color3.fromRGB(30,30,30)
+        t.BorderSizePixel = 0
+        t.TextColor3 = Color3.new(1,1,1)
+        t.Text = options.Name
+        t.Font = Enum.Font.Gotham
+        t.AutoButtonColor = false
+        t.TextSize = 13
+        t.Activated:Connect(function()
+            for _, tab in pairs(f1:GetChildren()) do
+                if tab:IsA("TextButton") then
+                    tab.BackgroundColor3 = Color3.fromRGB(30,30,30)
+                end
+            end
+            for _, box in pairs(f3:GetChildren()) do
+                if f3:IsA("ScrollingFrame") then
+                    box.Visible = false
+                end
+            end
+            t.BackgroundColor3 = Color3.fromRGB(45,45,45)
+            f3.Visible = true
+        end)
+    end
 end
 
 return library
