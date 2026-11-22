@@ -11,7 +11,7 @@ function library:CreateWindow(options)
         options.Executor = false
     end
     local exec,ver = identifyexecutor()
-    if gethui():FindFirstChild("Dragon") and gethui.Dragon:IsA("Folder") then
+    if gethui():FindFirstChild("Dragon") and gethui().Dragon:IsA("Folder") then
         error("You already have a window created",2)
     end
     local folder = Instance.new("Folder",gethui())
