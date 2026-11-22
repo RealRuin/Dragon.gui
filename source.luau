@@ -103,6 +103,7 @@ function library:CreateWindow(options)
             f3.Visible = true
         end)
     end
+    return window
 end
 
 return library
