@@ -1,5 +1,4 @@
 local library = {}
-
 function library:CreateWindow(options)
     if type(options) ~= "table" then
         error("Expected table, got " .. typeof(options),2)
@@ -69,16 +68,19 @@ function library:CreateWindow(options)
     i4.Position = UDim2.new(0,0,0,300)
     local window = {}
     function window:CreateTab(options)
+        if type(options) ~= "table" then
+            error("Expected table, got " .. typeof(options))
+        end
         if options.Name == nil or type(options.Name) ~= "string" then
             options.Name = "Tab"
         end
         local tabPos = 0
         for _, pos in pairs(f1:GetChildren()) do
             if pos:IsA("TextButton") then
-                if tabPos >= 350 then
-                    error("You can only have 8 tabs or less",2)
+                if tabPos >= 320 then
+                    error("You can only have 5 tabs or less, " .. "(" .. options.Name .. ")",2)
                 else
-                    tabPos += 50
+                    tabPos += 80
                 end
             end
         end
@@ -90,7 +92,7 @@ function library:CreateWindow(options)
         f3.ScrollBarThickness = 0
         f3.Visible = false
         local t = Instance.new("TextButton",f1)
-        t.Size = UDim2.new(0,50,1,0)
+        t.Size = UDim2.new(0,80,1,0)
         t.Position = UDim2.new(0,tabPos,0,0)
         t.BackgroundColor3 = Color3.fromRGB(30,30,30)
         t.BorderSizePixel = 0
@@ -106,15 +108,56 @@ function library:CreateWindow(options)
                 end
             end
             for _, box in pairs(f3:GetChildren()) do
-                if f3:IsA("ScrollingFrame") then
+                if box:IsA("ScrollingFrame") then
                     box.Visible = false
                 end
             end
             t.BackgroundColor3 = Color3.fromRGB(45,45,45)
             f3.Visible = true
         end)
+        local tab = {}
+        function tab:CreateSection(options)
+            local sectionPos = 5
+            if type(options) ~= "table" then
+                error("Expected table, got " .. typeof(options),2)
+            end
+            if typeof(options.Side) ~= "string" or options.Name ~= ("Left" or "Right") then
+                error("Expected string, got " .. typeof(options.Side),2)
+            end
+            if options.Name == nil or typeof(options.Name) ~= "string" then
+                options.Name = "Section"
+            end
+            local f4 = Instance.new("Frame",f3)
+            if options.Side == "Left" then
+                for _, sec in pairs(f3:GetChildren()) do
+                    if sec:IsA("Frame") and sec.Position.X.Offset == 5 then
+                        sectionPos += (sec.Size.Y.Offset + 5)
+                    end
+                end
+                f4.Position = UDim2.new(0,5,0,sectionPos)
+                sectionPos = 5
+            elseif options.Side == "Right" then
+                for _, sec in pairs(f3:GetChildren()) do
+                    if sec:IsA("Frame") and sec.Position.X.Offset == 205 then
+                        sectionPos += (sec.Size.Y.Offset + 5)
+                    end
+                end
+                f4.Position = UDim2.new(0,205,0,sectionPos)
+                sectionPos = 5
+            end
+            f4.Size = UDim2.new(0,185,0,10)
+            f4.BackgroundColor3 = Color3.fromRGB(30,30,30)
+            f4.BorderMode = Enum.BorderMode.Middle
+            f4.BorderSizePixel = 2
+            f4.BorderColor3 = Color3.fromRGB(60,60,60)
+        end
+        return tab
     end
     return window
 end
-
+function library:Unload()
+    if gethui():FindFirstChild("Dragon") and gethui().Dragon:IsA("Folder") then
+        gethui().Dragon:Destroy()
+    end
+end
 return library
