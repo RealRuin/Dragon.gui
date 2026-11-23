@@ -121,13 +121,8 @@ function library:CreateWindow(options)
             if type(options) ~= "table" then
                 error("Expected table, got " .. typeof(options),2)
             end
-            if type(options.Side) ~= "string" then
+            if type(options.Side) ~= "string" or options.Side ~= ("Left" or "Right") then
                 error("Expected string, got " .. typeof(options.Side),2)
-            end
-            if options.Side ~= "Left" then
-                if options.Side ~= "Right" then
-                    error("Expected Left or Right, got " .. options.Side,2)
-                end
             end
             if options.Name == nil or typeof(options.Name) ~= "string" then
                 options.Name = "Section"
@@ -155,6 +150,44 @@ function library:CreateWindow(options)
             f4.BorderMode = Enum.BorderMode.Middle
             f4.BorderSizePixel = 2
             f4.BorderColor3 = Color3.fromRGB(60,60,60)
+            local section = {}
+            function section:CreateLabel(options)
+                if options.Text == nil or type(options.Text) ~= "string" then
+                    error("Expected string, got " .. typeof(options.Text))
+                end
+                if type(options.Align) ~= "string" then
+                    error("Expected string, got " .. typeof(options.Align))
+                end
+                if options.Align ~= "Left" then
+                    if options.Align ~= "Center" then
+                        if options.Align ~= "Right" then
+                            error("Expected Left, Right, or Center. Got " .. options.Align)
+                        end
+                    end
+                end
+                local elementOffset = 5
+                local t3 = Instance.new("TextLabel",f4)
+                t3.BackgroundTransparency = 1
+                t3.Size = UDim2.new(0,175,0,16)
+                for _, element in pairs(f4:GetChildren()) do
+                    elementOffset += 16
+                end
+                t3.Position = UDim2.new(0,50,0,elementOffset)
+                t3.Text = options.Text
+                if options.Align == "Center" then
+                    t3.TextXAlignment = Enum.TextXAlignment.Center
+                elseif options.Align == "Left" then
+                    t3.TextXAlignment = Enum.TextXAlignment.Left
+                elseif options.Align == "Right" then
+                    t3.TextXAlignment = Enum.TextXAlignment.Right
+                end
+                t3.TextColor3 = Color3.new(1,1,1)
+                t3.Font = Enum.Font.Gotham
+                t3.TextSize = 12
+                t3.BorderSizePixel = 0
+                f4.Size = f4.Size + UDim2.new(0,0,0,20)
+            end
+            return section
         end
         return tab
     end
