@@ -172,7 +172,8 @@ function library:CreateWindow(options)
                 for _, element in pairs(f4:GetChildren()) do
                     elementOffset += 16
                 end
-                t3.Position = UDim2.new(0,50,0,elementOffset)
+                elementOffset += -16
+                t3.Position = UDim2.new(0,5,0,elementOffset)
                 t3.Text = options.Text
                 if options.Align == "Center" then
                     t3.TextXAlignment = Enum.TextXAlignment.Center
