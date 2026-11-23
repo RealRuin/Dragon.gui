@@ -107,7 +107,7 @@ function library:CreateWindow(options)
                     tab.BackgroundColor3 = Color3.fromRGB(30,30,30)
                 end
             end
-            for _, box in pairs(f3:GetChildren()) do
+            for _, box in pairs(f2:GetChildren()) do
                 if box:IsA("ScrollingFrame") then
                     box.Visible = false
                 end
