@@ -1,7 +1,7 @@
 # Dragon.gui
 A simple Roblox UI Library, still work in progress. Testing will be done with [Potassium](https://potassium.pro).
 
-Made for executor environments, do not use this in studio, parts of it won't work.
+Made for executor environments, do not use this in studio, it probably won't work.
 
 ## Guide
 Loading the library:
@@ -15,8 +15,4 @@ local window = library:CreateWindow({Name = "Example",Executor = true})
 Creating tabs:
 ```luau
 local tab = window:CreateTab({Name = "Example"})
-```
-or just
-```luau
-window:CreateTab({Name = "Example2"})
 ```
