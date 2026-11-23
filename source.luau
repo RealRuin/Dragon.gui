@@ -187,6 +187,13 @@ function library:CreateWindow(options)
                 t3.TextSize = 12
                 t3.BorderSizePixel = 0
                 f4.Size = f4.Size + UDim2.new(0,0,0,20)
+                for _, move in pairs(f3:GetChildren()) do
+                    if move:IsA("Frame") and move.Position.X.Offset == f4.Position.X.Offset then
+                        if move.PositionY.Offset > f4.Position.Y.Offset then
+                            move.Position = move.Position + UDim2.new(0,0,0,20)
+                        end
+                    end
+                end
             end
             return section
         end
