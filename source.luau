@@ -121,8 +121,13 @@ function library:CreateWindow(options)
             if type(options) ~= "table" then
                 error("Expected table, got " .. typeof(options),2)
             end
-            if type(options.Side) ~= "string" or options.Side ~= "Left" or "Right" then
+            if type(options.Side) ~= "string" then
                 error("Expected string, got " .. typeof(options.Side),2)
+            end
+            if options.Side ~= "Left" then
+                if options.Side ~= "Right" then
+                    error("Expected Left or Right, got " .. options.Side,2)
+                end
             end
             if options.Name == nil or typeof(options.Name) ~= "string" then
                 options.Name = "Section"
