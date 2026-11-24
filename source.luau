@@ -241,6 +241,7 @@ function library:CreateWindow(options)
                 t4.Activated:Connect(function()
                     options.Callback()
                 end)
+                f4.Size = f4.Size + UDim2.new(0,0,0,16)
                 local canSize2 = 0
                 for _, can in pairs(f3:GetChildren()) do
                     if (can.Position.Y.Offset + can.Size.Y.Offset) > canSize2 then
