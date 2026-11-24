@@ -154,6 +154,13 @@ function library:CreateWindow(options)
             f4.BorderMode = Enum.BorderMode.Middle
             f4.BorderSizePixel = 2
             f4.BorderColor3 = Color3.fromRGB(60,60,60)
+            local canSize = 0
+            for _, can in pairs(f3:GetChildren()) do
+                if can:IsA("Frame") and (can.Position.Y.Offset + can.Size.Y.Offset) > canSize then
+                    canSize = can.Position.Y.Offset + can.Size.Y.Offset
+                end
+            end
+            f3.CanvasSize = UDim2.new(0,0,0,canSize + 5)
             local section = {}
             function section:CreateLabel(options)
                 if options.Text == nil or type(options.Text) ~= "string" then
@@ -198,6 +205,13 @@ function library:CreateWindow(options)
                         end
                     end
                 end
+                local canSize1 = 0
+                for _, can in pairs(f3:GetChildren()) do
+                    if can:IsA("Frame") and (can.Position.Y.Offset + can.Size.Y.Offset) > canSize1 then
+                        canSize1 = can.Position.Y.Offset + can.Size.Y.Offset
+                    end
+                end
+                f3.CanvasSize = UDim2.new(0,0,0,canSize1 + 5)
             end
             return section
         end
