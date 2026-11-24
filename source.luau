@@ -231,9 +231,9 @@ function library:CreateWindow(options)
                 end
                 btnPos += -16
                 t4.Position = UDim2.new(0,5,0,btnPos)
-                t4.BackgroundColor3 = Color3.fromRGB(30,30,30)
+                t4.BackgroundColor3 = Color3.fromRGB(45,45,45)
                 t4.BorderColor3 = Color3.fromRGB(45,45,45)
-                t4.BorderSizePixel = 1
+                t4.BorderSizePixel = 0
                 t4.Text = options.Name
                 t4.TextSize = 13
                 t4.Font = Enum.Font.Gotham
