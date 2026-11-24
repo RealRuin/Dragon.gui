@@ -204,7 +204,7 @@ function library:CreateWindow(options)
                 end
                 local canSize1 = 0
                 for _, can in pairs(f3:GetChildren()) do
-                    if can:IsA("Frame") and (can.Position.Y.Offset + can.Size.Y.Offset) > canSize1 then
+                    if (can.Position.Y.Offset + can.Size.Y.Offset) > canSize1 then
                         canSize1 = can.Position.Y.Offset + can.Size.Y.Offset
                     end
                 end
@@ -243,7 +243,7 @@ function library:CreateWindow(options)
                 end)
                 local canSize2 = 0
                 for _, can in pairs(f3:GetChildren()) do
-                    if can:IsA("Frame") and (can.Position.Y.Offset + can.Size.Y.Offset) > canSize2 then
+                    if (can.Position.Y.Offset + can.Size.Y.Offset) > canSize2 then
                         canSize2 = can.Position.Y.Offset + can.Size.Y.Offset
                     end
                 end
