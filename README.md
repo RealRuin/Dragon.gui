@@ -16,3 +16,11 @@ Creating tabs:
 ```luau
 local tab = window:CreateTab({Name = "Example"})
 ```
+Creating Sections:
+```luau
+local section = tab:CreateSection({Side = "Left"})
+```
+Creating Labels:
+```luau
+local label = section:CreateLabel({Text = "Example",Align = "Left"})
+```
