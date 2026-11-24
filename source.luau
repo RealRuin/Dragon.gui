@@ -128,9 +128,6 @@ function library:CreateWindow(options)
                     end
                 end
             end
-            if options.Name == nil or typeof(options.Name) ~= "string" then
-                options.Name = "Section"
-            end
             local f4 = Instance.new("Frame",f3)
             if options.Side == "Left" then
                 for _, sec in pairs(f3:GetChildren()) do
