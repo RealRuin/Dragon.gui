@@ -210,6 +210,44 @@ function library:CreateWindow(options)
                 end
                 f3.CanvasSize = UDim2.new(0,0,0,canSize1 + 5)
             end
+            function section:CreateButton(options)
+                if type(options) ~= "table" then
+                    error("Expected table, got " .. typeof(options),2)
+                end
+                if not options.Callback then
+                    error("No callback found",2)
+                end
+                if type(options.Callback) ~= "function" then
+                    error("Expected function, got " .. typeof(options.Callback),2)
+                end
+                if options.Name == nil or type(options.Name) ~= "string" then
+                    options.Name = "Button"
+                end
+                local t4 = Instance.new("TextButton",f4)
+                t4.Size = UDim2.new(0,175,0,20)
+                local btnPos = 5
+                for _, element in pairs(f4:GetChildren()) do
+                    btnPos += 20
+                end
+                t4.Position = UDim2.new(0,5,0,btnPos)
+                t4.BackgroundColor3 = Color3.fromRGB(45,45,45)
+                t4.BorderColor3 = Color3.new(0,0,0)
+                t4.BorderSizePixel = 1
+                t4.Text = options.Name
+                t4.TextSize = 13
+                t4.Font = Enum.Font.Gotham
+                t4.TextColor3 = Color3.new(1,1,1)
+                t4.Activated:Connect(function()
+                    options.Callback()
+                end)
+                local canSize2 = 0
+                for _, can in pairs(f3:GetChildren()) do
+                    if can:IsA("Frame") and (can.Position.Y.Offset + can.Size.Y.Offset) > canSize2 then
+                        canSize2 = can.Position.Y.Offset + can.Size.Y.Offset
+                    end
+                end
+                f3.CanvasSize = UDim2.new(0,0,0,canSize2 + 5)
+            end
             return section
         end
         return tab
