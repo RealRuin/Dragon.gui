@@ -224,13 +224,13 @@ function library:CreateWindow(options)
                     options.Name = "Button"
                 end
                 local t4 = Instance.new("TextButton",f4)
-                t4.Size = UDim2.new(0,173,0,16)
+                t4.Size = UDim2.new(0,181,0,16)
                 local btnPos = 5
                 for _, element in pairs(f4:GetChildren()) do
                     btnPos += 16
                 end
                 btnPos += -16
-                t4.Position = UDim2.new(0,6,0,btnPos)
+                t4.Position = UDim2.new(0,2,0,btnPos)
                 t4.BackgroundColor3 = Color3.fromRGB(45,45,45)
                 t4.BorderColor3 = Color3.fromRGB(45,45,45)
                 t4.BorderSizePixel = 0
