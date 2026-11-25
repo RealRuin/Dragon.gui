@@ -224,7 +224,7 @@ function library:CreateWindow(options)
                     options.Name = "Button"
                 end
                 local t4 = Instance.new("TextButton",f4)
-                t4.Size = UDim2.new(0,181,0,16)
+                t4.Size = UDim2.new(0,180,0,16)
                 local btnPos = 5
                 for _, element in pairs(f4:GetChildren()) do
                     btnPos += 16
