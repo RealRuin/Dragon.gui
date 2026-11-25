@@ -143,10 +143,10 @@ function library:CreateWindow(options)
                         sectionPos += (sec.Size.Y.Offset + 5)
                     end
                 end
-                f4.Position = UDim2.new(0,205,0,sectionPos)
+                f4.Position = UDim2.new(0,203,0,sectionPos)
                 sectionPos = 5
             end
-            f4.Size = UDim2.new(0,185,0,10)
+            f4.Size = UDim2.new(0,187,0,10)
             f4.BackgroundColor3 = Color3.fromRGB(30,30,30)
             f4.BorderMode = Enum.BorderMode.Middle
             f4.BorderSizePixel = 2
